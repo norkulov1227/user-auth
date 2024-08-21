@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>        
+        {% if request.user.is_authenticated %}
+            <h1>User information</h1>
+            FullName: 
+            {% if request.user.first_name and request.user.last_name %}
+                {{ request.user.first_name }} {{ request.user.last_name }}
+            {% else %}
+                Anonim user
+            {% endif %} <br>
+            Phone:
+            {% if request.user.phone %}
+                {{ request.user.phone }}
+            {% else %}
+                <p>Phone not found</p>
+            {% endif %} <br>
+            <a class="btn btn-primary" href="{% url 'logout' %}">Log Out</a>
+            <a class="btn btn-primary" href="{% url 'password_change' %}">Change Password</a>
+        {% else %}
+            <h1>Tizimga kiring</h1><br>
+            <a class="btn btn-primary" href="{% url 'login' %}">Sign In</a>
+            <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+            <a href="{% url 'password_reset' %}">Forgot password?</a>
+        {% endif %}
+    </div>
+{% endblock content %}

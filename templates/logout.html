@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mt-100 mb-100" style="text-align:center" >
+        <div class="container">
+            <h1>Tizimdan chiqishni tasdiqlang!</h1>
+            <div class="mt-50 mb-50">
+                <form method="post">{% csrf_token %}
+                    <button type="submit">Tizimdan chiqish</button><br><br>
+                    <div>
+                        <a class="btn btn-primary" href="{% url 'home' %}">
+                            <strong>Orqaga</strong>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
